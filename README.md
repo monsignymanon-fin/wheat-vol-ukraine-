@@ -4,8 +4,9 @@
 
 Analyse de la persistance et de la mémoire longue (GARCH / EGARCH / GJR / FIGARCH), event study autour du 24/02/2022 et backtests de prévision de variance.
 
-## 🗂️ Structure du dépôt
-```
+---
+
+## Structure du dépôt
 wheat-vol-ukraine/
 ├─ README.md
 ├─ LICENSE
@@ -16,47 +17,56 @@ wheat-vol-ukraine/
 ├─ Makefile
 ├─ CITATION.cff
 ├─ config/
-│  └─ config.yaml
+│ └─ config.yaml
 ├─ data/
-│  ├─ README.md
-│  └─ wheat.csv        # (ignored if too big)
+│ ├─ README.md
+│ └─ wheat.csv # (optionnel; ignoré par git si volumineux)
 ├─ notebooks/
-│  └─ 01_explore.ipynb # (option)
-│  └─ wheatvol/
-│     ├─ __init__.py
-│     ├─ io.py
-│     ├─ transforms.py
-│     ├─ models.py
-│     ├─ forecasting.py
-│     ├─ event_study.py
-│     ├─ evaluation.py
-│     ├─ plots.py
-│     └─ cli.py
+│ └─ 01_explore.ipynb # (optionnel)
+├─ src/
+│ └─ wheatvol/
+│ ├─ init.py
+│ ├─ io.py
+│ ├─ transforms.py
+│ ├─ models.py
+│ ├─ forecasting.py
+│ ├─ event_study.py
+│ ├─ evaluation.py
+│ ├─ plots.py
+│ └─ cli.py
 ├─ scripts/
-│  ├─ run_fit.py
-│  ├─ run_event_study.py
-│  └─ run_backtest.py
+│ ├─ run_fit.py
+│ ├─ run_event_study.py
+│ └─ run_backtest.py
 ├─ tests/
-│  ├─ test_transforms.py
-│  ├─ test_models.py
-│  └─ test_event_study.py
+│ ├─ test_transforms.py
+│ ├─ test_models.py
+│ └─ test_event_study.py
 └─ .github/
-   └─ workflows/
-      └─ ci.yml
-```
+└─ workflows/
+└─ ci.yml
 
-## 🚀 Quickstart
+
+---
+
+## Quickstart
+
 ```bash
+# Créer l'environnement Python
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -e .[dev]
 pre-commit install
 pytest -q
 
-# Placez un CSV à data/wheat.csv (Date, Close), puis :
+# Préparer les données
+# Placez un CSV à data/wheat.csv avec les colonnes Date, Close
+
+# Lancer le fit baseline (GARCH/EGARCH/FIGARCH)
 python scripts/run_fit.py --config config/config.yaml
+
+# Event study ±N jours autour du 24/02/2022
 python scripts/run_event_study.py --config config/config.yaml
+
+# Backtest rolling (1-step variance) + métriques
 python scripts/run_backtest.py --config config/config.yaml
-```
-(test workflow run)
-test: trigger workflow
