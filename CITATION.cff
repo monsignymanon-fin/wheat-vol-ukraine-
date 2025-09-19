@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: wheat-vol-ukraine
+message: If you use this code, please cite it as below.
+authors:
+  - family-names: Auteur
+    given-names: Prenom
+version: 0.1.0
+date-released: 2025-09-19

@@ -1,0 +1,22 @@
+cutoff_date: "2022-02-24"
+returns_scale_pct: true
+
+models:
+  - {name: GARCH,  dist: t}
+  - {name: EGARCH, dist: t}
+  - {name: FIGARCH, dist: t}
+
+figarch:
+  p: 1
+  q: 1
+  d_init: 0.2
+
+rolling_forecast:
+  start_idx: 500
+
+event_study:
+  window_days: 60
+
+paths:
+  data_csv: "data/wheat.csv"
+  artifacts_dir: "artifacts"
