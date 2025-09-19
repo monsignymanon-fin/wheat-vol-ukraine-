@@ -19,10 +19,9 @@ wheat-vol-ukraine/
 │  └─ config.yaml
 ├─ data/
 │  ├─ README.md
-│  └─ wheat.csv        # (optionnel; ignoré par git si volumineux)
+│  └─ wheat.csv        # (ignored if too big)
 ├─ notebooks/
-│  └─ 01_explore.ipynb # (optionnel)
-├─ src/
+│  └─ 01_explore.ipynb # (option)
 │  └─ wheatvol/
 │     ├─ __init__.py
 │     ├─ io.py
