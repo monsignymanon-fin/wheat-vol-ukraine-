@@ -58,3 +58,5 @@ python scripts/run_fit.py --config config/config.yaml
 python scripts/run_event_study.py --config config/config.yaml
 python scripts/run_backtest.py --config config/config.yaml
 ```
+(test workflow run)
+test: trigger workflow
